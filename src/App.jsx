@@ -3,6 +3,7 @@ import HelloWorld from "./components/1st-Problem/HelloWorld";
 import CounterApp from "./components/2nd-problem/CounterApp";
 import FormInput from "./components/3rd-Problem/FormInput";
 import ListComponent from "./components/4th-Problem/ListComponent";
+import NavigationMenu from "./components/18th-Problem/NavigationMenu";
 // import ToggleSwitch from "./components/5th-Problem/ToggleSwitch";
 // import FetchDataFromAPI from "./components/6th-Problem/FetchDataFromAPI";
 // import TimerCountDown from "./components/7th-Problem/TimerCountDown";
@@ -37,19 +38,19 @@ function App() {
   return (
     <div>
       {/* 1st problem */}
-      <HelloWorld />
+      {/* <HelloWorld /> */}
 
       {/* 2nd problem */}
-      <CounterApp />
+      {/* <CounterApp /> */}
 
       {/* 3rd problem */}
-      <FormInput />
+      {/* <FormInput /> */}
 
       {/* 4th Problem */}
-      <ListComponent />
+      {/* <ListComponent /> */}
 
       {/* 5th Problem */}
-      {/* <ToggleSwitch /> */}
+      <ToggleSwitch />
 
       {/* 6th Problem */}
       {/* <FetchDataFromAPI /> */}
@@ -86,6 +87,9 @@ function App() {
 
       {/* 17th Problem */}
       {/* <ColorPicker /> */}      
+
+      {/* 18th Problem */}
+        <NavigationMenu />
     </div>
   );
 }
