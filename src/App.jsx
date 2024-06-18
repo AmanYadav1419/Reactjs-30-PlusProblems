@@ -4,6 +4,9 @@ import CounterApp from "./components/2nd-problem/CounterApp";
 import FormInput from "./components/3rd-Problem/FormInput";
 import ListComponent from "./components/4th-Problem/ListComponent";
 import NavigationMenu from "./components/18th-Problem/NavigationMenu";
+import DarkandLightTheme from "./components/19th-Problem/DarkandLightTheme";
+import { ThemeProvider } from "./components/19th-Problem/ThemeContext";
+import NineteenComp from "./components/19th-Problem/NineteenComp";
 // import ToggleSwitch from "./components/5th-Problem/ToggleSwitch";
 // import FetchDataFromAPI from "./components/6th-Problem/FetchDataFromAPI";
 // import TimerCountDown from "./components/7th-Problem/TimerCountDown";
@@ -56,10 +59,10 @@ function App() {
       {/* <FetchDataFromAPI /> */}
 
       {/* 7th Problem */}
-      <TimerCountDown />
+      {/* <TimerCountDown /> */}
 
       {/* 8th Problem */}
-      {/* <ToDoListApp /> */}
+      <ToDoListApp />
 
       {/* 9th Problem */}
       {/* <BackgroundChange /> */}
@@ -86,10 +89,18 @@ function App() {
       {/* <PaginationComponent listofNames={listofNames} itemsPerPage={2}/> */}
 
       {/* 17th Problem */}
-      {/* <ColorPicker /> */}      
+      {/* <ColorPicker /> */}
 
       {/* 18th Problem */}
-        <NavigationMenu />
+      <NavigationMenu />
+
+      {/* 19th Problem */}
+      <ThemeProvider>
+        <div className="App">
+          <DarkandLightTheme />
+          <NineteenComp />
+        </div>
+      </ThemeProvider>
     </div>
   );
 }
