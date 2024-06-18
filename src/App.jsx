@@ -53,10 +53,10 @@ function App() {
       {/* <ToggleSwitch /> */}
 
       {/* 6th Problem */}
-      <FetchDataFromAPI />
+      {/* <FetchDataFromAPI /> */}
 
       {/* 7th Problem */}
-      {/* <TimerCountDown /> */}
+      <TimerCountDown />
 
       {/* 8th Problem */}
       {/* <ToDoListApp /> */}
