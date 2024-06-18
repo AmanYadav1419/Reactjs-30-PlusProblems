@@ -50,10 +50,10 @@ function App() {
       {/* <ListComponent /> */}
 
       {/* 5th Problem */}
-      <ToggleSwitch />
+      {/* <ToggleSwitch /> */}
 
       {/* 6th Problem */}
-      {/* <FetchDataFromAPI /> */}
+      <FetchDataFromAPI />
 
       {/* 7th Problem */}
       {/* <TimerCountDown /> */}
