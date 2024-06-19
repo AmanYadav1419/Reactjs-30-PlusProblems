@@ -24,6 +24,5 @@ const BackgroundChange = () => {
   );
 };
 
-// video start from 46:30
 
 export default BackgroundChange;

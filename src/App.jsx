@@ -68,7 +68,7 @@ function App() {
       <BackgroundChange />
 
       {/* 10th Problem */}
-      {/* <BasicRoute /> */}
+      <BasicRoute />
 
       {/* 11th Problem */}
       {/* <RandomQuote /> */}
