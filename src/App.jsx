@@ -65,16 +65,16 @@ function App() {
       {/* <ToDoListApp /> */}
 
       {/* 9th Problem */}
-      <BackgroundChange />
+      {/* <BackgroundChange /> */}
 
       {/* 10th Problem */}
-      <BasicRoute />
+      {/* <BasicRoute /> */}
 
       {/* 11th Problem */}
-      <RandomQuote />
+      {/* <RandomQuote /> */}
 
       {/* 12th Problem */}
-      {/* <FileUploader /> */}
+      <FileUploader />
 
       {/* 13th Problem */}
       {/* <BasicLoginAndRegistrationForm /> */}
