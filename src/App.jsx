@@ -71,7 +71,7 @@ function App() {
       <BasicRoute />
 
       {/* 11th Problem */}
-      {/* <RandomQuote /> */}
+      <RandomQuote />
 
       {/* 12th Problem */}
       {/* <FileUploader /> */}
