@@ -7,19 +7,19 @@ import NavigationMenu from "./components/18th-Problem/NavigationMenu";
 import DarkandLightTheme from "./components/19th-Problem/DarkandLightTheme";
 import { ThemeProvider } from "./components/19th-Problem/ThemeContext";
 import NineteenComp from "./components/19th-Problem/NineteenComp";
-// import ToggleSwitch from "./components/5th-Problem/ToggleSwitch";
-// import FetchDataFromAPI from "./components/6th-Problem/FetchDataFromAPI";
-// import TimerCountDown from "./components/7th-Problem/TimerCountDown";
-// import ToDoListApp from "./components/8th-Problem/ToDoListApp";
-// import BackgroundChange from "./components/9th-Problem/BackgroundChange";
-// import BasicRoute from "./components/10th-Problem/BasicRoute";
-// import RandomQuote from "./components/11th-Problem/RandomQuote";
-// import FileUploader from "./components/12th-Problem/FileUploader";
-// import BasicLoginAndRegistrationForm from "./components/13th-Problem/BasicLoginAndRegistrationForm";
-// import WeatherApp from "./components/14th-Problem/WeatherApp";
-// import SearchBarFilter from "./components/15th-Problem/SearchBarFilter";
-// import PaginationComponent from "./components/16th-Problem/PaginationComponent";
-// import ColorPicker from "./components/17th-Problem/ColorPicker";
+import ToggleSwitch from "./components/5th-Problem/ToggleSwitch";
+import FetchDataFromAPI from "./components/6th-Problem/FetchDataFromAPI";
+import TimerCountDown from "./components/7th-Problem/TimerCountDown";
+import ToDoListApp from "./components/8th-Problem/ToDoListApp";
+import BackgroundChange from "./components/9th-Problem/BackgroundChange";
+import BasicRoute from "./components/10th-Problem/BasicRoute";
+import RandomQuote from "./components/11th-Problem/RandomQuote";
+import FileUploader from "./components/12th-Problem/FileUploader";
+import BasicLoginAndRegistrationForm from "./components/13th-Problem/BasicLoginAndRegistrationForm";
+import WeatherApp from "./components/14th-Problem/WeatherApp";
+import SearchBarFilter from "./components/15th-Problem/SearchBarFilter";
+import PaginationComponent from "./components/16th-Problem/PaginationComponent";
+import ColorPicker from "./components/17th-Problem/ColorPicker";
 
 // it should for 15th and 16th problem as props
 const listofNames = [
@@ -62,10 +62,10 @@ function App() {
       {/* <TimerCountDown /> */}
 
       {/* 8th Problem */}
-      <ToDoListApp />
+      {/* <ToDoListApp /> */}
 
       {/* 9th Problem */}
-      {/* <BackgroundChange /> */}
+      <BackgroundChange />
 
       {/* 10th Problem */}
       {/* <BasicRoute /> */}
@@ -92,15 +92,16 @@ function App() {
       {/* <ColorPicker /> */}
 
       {/* 18th Problem */}
-      <NavigationMenu />
+      {/* <NavigationMenu /> */}
 
       {/* 19th Problem */}
-      <ThemeProvider>
+      {/* <ThemeProvider>
         <div className="App">
           <DarkandLightTheme />
           <NineteenComp />
         </div>
-      </ThemeProvider>
+      </ThemeProvider> */}
+
     </div>
   );
 }
