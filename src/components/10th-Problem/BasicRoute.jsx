@@ -1,27 +1,31 @@
-
 // question :- Build a basic routing setup with React Router
 
-import React from 'react'
-import FormInput from '../3rd-Problem/FormInput'
-import TimerCountDown from '../7th-Problem/TimerCountDown'
+import React from "react";
+import FormInput from "../3rd-Problem/FormInput";
+import TimerCountDown from "../7th-Problem/TimerCountDown";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 const BasicRoute = () => {
   return (
-    <BrowserRoute>
-    <nav>
+    
+    <BrowserRouter>
+      <nav>
         <ul>
-            <li><Link to='/'>FormInput</Link></li>
-            <li><Link to='/timer'>TimerCountDown</Link></li>
+          <li>
+            <Link to="/form">FORMInput</Link>
+          </li>
+          <li>
+            <Link to="/timer">TimerCountDown</Link>
+          </li>
         </ul>
-    </nav>
+      </nav>
 
+      <Routes>
+        <Route path="/form" element={<FormInput />} />
+        <Route path="/timer" element={<TimerCountDown />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-    <Routes>
-        <Route path='/' element={<FormInput />} />
-        <Route path='/timer' element={<TimerCountDown />} />
-    </Routes>
-    </BrowserRoute>
-  )
-}
-
-export default BasicRoute
+export default BasicRoute;
