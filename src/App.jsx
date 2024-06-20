@@ -71,7 +71,7 @@ function App() {
       {/* <BackgroundChange /> */}
 
       {/* 10th Problem */}
-      <BasicRoute />
+      {/* <BasicRoute /> */}
 
       {/* 11th Problem */}
       {/* <RandomQuote /> */}
@@ -80,10 +80,10 @@ function App() {
       {/* <FileUploader /> */}
 
       {/* 13th Problem */}
-      <BasicLoginAndRegistrationForm />
+      {/* <BasicLoginAndRegistrationForm /> */}
 
       {/* 14th Problem */}
-      {/* <WeatherApp /> */}
+      <WeatherApp />
 
       {/* 15th Problem */}
       {/* <SearchBarFilter listofNames={listofNames}/> */}
