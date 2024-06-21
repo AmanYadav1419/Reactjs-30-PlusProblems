@@ -18,7 +18,7 @@ import React from "react";
 // import BasicLoginAndRegistrationForm from "./components/13th-Problem/BasicLoginAndRegistrationForm";
 // import WeatherApp from "./components/14th-Problem/WeatherApp";
 import SearchBarFilter from "./components/15th-Problem/SearchBarFilter";
-// import PaginationComponent from "./components/16th-Problem/PaginationComponent";
+import PaginationComponent from "./components/16th-Problem/PaginationComponent";
 // import ColorPicker from "./components/17th-Problem/ColorPicker";
 // import ShoppingCart from "./components/20th-Problem/ShoppingCart";
 // import { CartProvider } from "./components/20th-Problem/CartContext";
@@ -91,7 +91,7 @@ function App() {
       <SearchBarFilter listofNames={listofNames}/>
 
       {/* 16th Problem */}
-      {/* <PaginationComponent listofNames={listofNames} itemsPerPage={2}/> */}
+       <PaginationComponent listofNames={listofNames} itemsPerPage={2}/>
 
       {/* 17th Problem */}
       {/* <ColorPicker /> */}
