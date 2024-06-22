@@ -3,7 +3,7 @@ import React from "react";
 // import CounterApp from "./components/2nd-problem/CounterApp";
 // import FormInput from "./components/3rd-Problem/FormInput";
 // import ListComponent from "./components/4th-Problem/ListComponent";
-// import NavigationMenu from "./components/18th-Problem/NavigationMenu";
+import NavigationMenu from "./components/18th-Problem/NavigationMenu";
 // import DarkandLightTheme from "./components/19th-Problem/DarkandLightTheme";
 // import { ThemeProvider } from "./components/19th-Problem/ThemeContext";
 // import NineteenComp from "./components/19th-Problem/NineteenComp";
@@ -17,14 +17,17 @@ import React from "react";
 // import FileUploader from "./components/12th-Problem/FileUploader";
 // import BasicLoginAndRegistrationForm from "./components/13th-Problem/BasicLoginAndRegistrationForm";
 // import WeatherApp from "./components/14th-Problem/WeatherApp";
-import SearchBarFilter from "./components/15th-Problem/SearchBarFilter";
-import PaginationComponent from "./components/16th-Problem/PaginationComponent";
-import ColorPicker from "./components/17th-Problem/ColorPicker";
+// import SearchBarFilter from "./components/15th-Problem/SearchBarFilter";
+// import PaginationComponent from "./components/16th-Problem/PaginationComponent";
+// import ColorPicker from "./components/17th-Problem/ColorPicker";
 // import ShoppingCart from "./components/20th-Problem/ShoppingCart";
 // import { CartProvider } from "./components/20th-Problem/CartContext";
 // import CounterWithReducer from "./components/21th-Problem/CounterWithReducer";
 // import ToDowithReducer from "./components/22th-Problem/ToDowithReducer";
 // import PaginationWithReducer from "./components/23th-Problem/PaginationWithReducer";
+// import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
+// import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
+// import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
 
 // it should for 15th and 16th problem as props
 const listofNames = [
@@ -88,16 +91,16 @@ function App() {
       {/* <WeatherApp /> */}
 
       {/* 15th Problem */}
-      <SearchBarFilter listofNames={listofNames}/>
+      {/* <SearchBarFilter listofNames={listofNames}/> */}
 
       {/* 16th Problem */}
-       <PaginationComponent listofNames={listofNames} itemsPerPage={2}/>
+      {/* <PaginationComponent listofNames={listofNames} itemsPerPage={2}/> */}
 
       {/* 17th Problem */}
-      <ColorPicker />
+      {/* <ColorPicker /> */}
 
       {/* 18th Problem */}
-      {/* <NavigationMenu /> */}
+      <NavigationMenu />
 
       {/* 19th Problem */}
       {/* <ThemeProvider>
@@ -115,12 +118,19 @@ function App() {
       {/* 21th Problem */}
       {/* <CounterWithReducer /> */}
 
-        {/* 22th Problem */}
-        {/* <ToDowithReducer /> */}
+      {/* 22th Problem */}
+      {/* <ToDowithReducer /> */}
 
-        {/* 23th Problem */}
-        {/* <PaginationWithReducer /> */}
+      {/* 23th Problem */}
+      {/* <PaginationWithReducer /> */}
 
+      {/* 24th Problem */}
+      {/* <AuthProvider>
+        <UserAuthenticationSystem />
+      </AuthProvider> */}
+
+      {/* 25th Problem */}
+      {/* <DragableComponentWithReducer /> */}
     </div>
   );
 }
