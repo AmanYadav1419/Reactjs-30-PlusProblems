@@ -4,6 +4,12 @@ import React from "react";
 // import FormInput from "./components/3rd-Problem/FormInput";
 // import ListComponent from "./components/4th-Problem/ListComponent";
 import NavigationMenu from "./components/18th-Problem/NavigationMenu";
+import LocalizationSystem from "./components/26th-Problem/LocalizationSystem";
+import { LocalizationProvider } from "./components/26th-Problem/LocalizationContext";
+import MultipleAPIdataFetch from "./components/27th-Problem/MultipleAPIdataFetch";
+import MultipleStateInSingleState from "./components/28th-Problem/MultipleStateInSingleState";
+import ImageGallery from "./components/29th-Problem/ImageGallery";
+import DifferentRoutePages from "./components/30th-Problem/DifferentRoutePages";
 // import DarkandLightTheme from "./components/19th-Problem/DarkandLightTheme";
 // import { ThemeProvider } from "./components/19th-Problem/ThemeContext";
 // import NineteenComp from "./components/19th-Problem/NineteenComp";
@@ -20,8 +26,8 @@ import NavigationMenu from "./components/18th-Problem/NavigationMenu";
 // import SearchBarFilter from "./components/15th-Problem/SearchBarFilter";
 // import PaginationComponent from "./components/16th-Problem/PaginationComponent";
 // import ColorPicker from "./components/17th-Problem/ColorPicker";
-// import ShoppingCart from "./components/20th-Problem/ShoppingCart";
-// import { CartProvider } from "./components/20th-Problem/CartContext";
+import ShoppingCart from "./components/20th-Problem/ShoppingCart";
+import { CartProvider } from "./components/20th-Problem/CartContext";
 // import CounterWithReducer from "./components/21th-Problem/CounterWithReducer";
 // import ToDowithReducer from "./components/22th-Problem/ToDowithReducer";
 // import PaginationWithReducer from "./components/23th-Problem/PaginationWithReducer";
@@ -100,7 +106,7 @@ function App() {
       {/* <ColorPicker /> */}
 
       {/* 18th Problem */}
-      <NavigationMenu />
+      {/* <NavigationMenu /> */}
 
       {/* 19th Problem */}
       {/* <ThemeProvider>
@@ -111,9 +117,9 @@ function App() {
       </ThemeProvider> */}
 
       {/* 20th Problem */}
-      {/* <CartProvider>
+      <CartProvider>
       <ShoppingCart />
-      </CartProvider> */}
+      </CartProvider>
 
       {/* 21th Problem */}
       {/* <CounterWithReducer /> */}
@@ -131,6 +137,23 @@ function App() {
 
       {/* 25th Problem */}
       {/* <DragableComponentWithReducer /> */}
+
+      {/* 26th Problem */}
+      {/* <LocalizationProvider>
+        <LocalizationSystem />
+      </LocalizationProvider> */}
+
+      {/* 27th Problem */}
+      {/* <MultipleAPIdataFetch /> */}
+
+      {/* 28th Problem */}
+      {/* <MultipleStateInSingleState /> */}
+
+      {/* 29th Problem */}
+      {/* <ImageGallery /> */}
+
+      {/* 30th Problem */}
+      {/* <DifferentRoutePages /> */}
     </div>
   );
 }
