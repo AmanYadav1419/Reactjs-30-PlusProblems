@@ -29,7 +29,7 @@ import DifferentRoutePages from "./components/30th-Problem/DifferentRoutePages";
 import ShoppingCart from "./components/20th-Problem/ShoppingCart";
 import { CartProvider } from "./components/20th-Problem/CartContext";
 import CounterWithReducer from "./components/21th-Problem/CounterWithReducer";
-// import ToDowithReducer from "./components/22th-Problem/ToDowithReducer";
+import ToDowithReducer from "./components/22th-Problem/ToDowithReducer";
 // import PaginationWithReducer from "./components/23th-Problem/PaginationWithReducer";
 // import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
 // import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
@@ -125,7 +125,7 @@ function App() {
       <CounterWithReducer />
 
       {/* 22th Problem */}
-      {/* <ToDowithReducer /> */}
+      <ToDowithReducer />
 
       {/* 23th Problem */}
       {/* <PaginationWithReducer /> */}
