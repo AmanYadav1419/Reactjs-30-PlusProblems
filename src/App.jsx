@@ -31,8 +31,8 @@ import { CartProvider } from "./components/20th-Problem/CartContext";
 import CounterWithReducer from "./components/21th-Problem/CounterWithReducer";
 import ToDowithReducer from "./components/22th-Problem/ToDowithReducer";
 import PaginationWithReducer from "./components/23th-Problem/PaginationWithReducer";
-// import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
-// import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
+import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
+import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
 // import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
 
 // it should for 15th and 16th problem as props
@@ -131,9 +131,9 @@ function App() {
       <PaginationWithReducer />
 
       {/* 24th Problem */}
-      {/* <AuthProvider>
+      <AuthProvider>
         <UserAuthenticationSystem />
-      </AuthProvider> */}
+      </AuthProvider>
 
       {/* 25th Problem */}
       {/* <DragableComponentWithReducer /> */}
