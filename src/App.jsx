@@ -30,7 +30,7 @@ import ShoppingCart from "./components/20th-Problem/ShoppingCart";
 import { CartProvider } from "./components/20th-Problem/CartContext";
 import CounterWithReducer from "./components/21th-Problem/CounterWithReducer";
 import ToDowithReducer from "./components/22th-Problem/ToDowithReducer";
-// import PaginationWithReducer from "./components/23th-Problem/PaginationWithReducer";
+import PaginationWithReducer from "./components/23th-Problem/PaginationWithReducer";
 // import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
 // import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
 // import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
@@ -128,7 +128,7 @@ function App() {
       <ToDowithReducer />
 
       {/* 23th Problem */}
-      {/* <PaginationWithReducer /> */}
+      <PaginationWithReducer />
 
       {/* 24th Problem */}
       {/* <AuthProvider>
