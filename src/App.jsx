@@ -33,7 +33,7 @@ import ToDowithReducer from "./components/22th-Problem/ToDowithReducer";
 import PaginationWithReducer from "./components/23th-Problem/PaginationWithReducer";
 import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
 import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
-// import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
+import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
 
 // it should for 15th and 16th problem as props
 const listofNames = [
@@ -136,12 +136,12 @@ function App() {
       </AuthProvider>
 
       {/* 25th Problem */}
-      {/* <DragableComponentWithReducer /> */}
+      <DragableComponentWithReducer />
 
       {/* 26th Problem */}
-      {/* <LocalizationProvider>
+      <LocalizationProvider>
         <LocalizationSystem />
-      </LocalizationProvider> */}
+      </LocalizationProvider>
 
       {/* 27th Problem */}
       {/* <MultipleAPIdataFetch /> */}
