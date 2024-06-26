@@ -147,7 +147,7 @@ function App() {
       <MultipleAPIdataFetch />
 
       {/* 28th Problem */}
-      {/* <MultipleStateInSingleState /> */}
+      <MultipleStateInSingleState />
 
       {/* 29th Problem */}
       {/* <ImageGallery /> */}
