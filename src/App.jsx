@@ -144,7 +144,7 @@ function App() {
       </LocalizationProvider>
 
       {/* 27th Problem */}
-      {/* <MultipleAPIdataFetch /> */}
+      <MultipleAPIdataFetch />
 
       {/* 28th Problem */}
       {/* <MultipleStateInSingleState /> */}
