@@ -153,7 +153,7 @@ function App() {
       <ImageGallery />
 
       {/* 30th Problem */}
-      {/* <DifferentRoutePages /> */}
+      <DifferentRoutePages />
     </div>
   );
 }
