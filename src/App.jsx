@@ -150,7 +150,7 @@ function App() {
       <MultipleStateInSingleState />
 
       {/* 29th Problem */}
-      {/* <ImageGallery /> */}
+      <ImageGallery />
 
       {/* 30th Problem */}
       {/* <DifferentRoutePages /> */}
