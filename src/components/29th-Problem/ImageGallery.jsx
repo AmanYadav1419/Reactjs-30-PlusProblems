@@ -1,24 +1,30 @@
-// question:- Build a basic image gallery with useReducer to allow users to navigate between images and display the current image.
-
 import React, { useReducer } from "react";
 
 const ImageGallery = () => {
   // initial state
-  const initialState = () => {
-    currentImageIndex: 0;
+  const initialState = {
+    currentImageIndex: 0,
   };
 
-  // reduer function
+  // reducer function
   const imageReducer = (state, action) => {
     switch (action.type) {
       case "PREVIOUS_IMAGE":
         return {
-          currentImageIndex: state.currentImageIndex - 1,
+          ...state,
+          currentImageIndex:
+            state.currentImageIndex > 0
+              ? state.currentImageIndex - 1
+              : state.currentImageIndex, // Prevent going out of bounds
         };
 
       case "NEXT_IMAGE":
         return {
-          currentImageIndex: state.currentImageIndex + 1,
+          ...state,
+          currentImageIndex:
+            state.currentImageIndex < images.length - 1
+              ? state.currentImageIndex + 1
+              : state.currentImageIndex, // Prevent going out of bounds
         };
 
       default:
@@ -29,12 +35,13 @@ const ImageGallery = () => {
   // array of images
   const images = [
     "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
-    "https://wallpapers.com/images/hd/marvel-pictures-a8zqSu8qw3ega7cx.jpg",
-    "https://upload.wikimedia.org/wikimedia/en/1/19/Marvel_Universe_%28Civil_War%29.jpg",
+    "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
+    "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
+    "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
   ];
 
   // reducer hook
-  const [image, dispatch] = useReducer(imageReducer, initialState);
+  const [state, dispatch] = useReducer(imageReducer, initialState);
 
   const currentImage = images[state.currentImageIndex];
 
@@ -42,7 +49,7 @@ const ImageGallery = () => {
     <div>
       <h1>Marvel Image Gallery</h1>
       <div>
-        <img src={currentImage} />
+        <img src={currentImage} alt="Marvel" />
       </div>
 
       <div>
