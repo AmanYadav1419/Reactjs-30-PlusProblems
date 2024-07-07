@@ -34,6 +34,7 @@ import PaginationWithReducer from "./components/23th-Problem/PaginationWithReduc
 import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
 import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
 import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
+import FAQ from "./components/31th-Probem/FAQ";
 
 // it should for 15th and 16th problem as props
 const listofNames = [
@@ -154,6 +155,9 @@ function App() {
 
       {/* 30th Problem */}
       <DifferentRoutePages />
+
+      {/* 31th Probem */}
+      <FAQ />
     </div>
   );
 }

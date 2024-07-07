@@ -1,0 +1,20 @@
+{
+  "faqs": [
+    {
+      "question": "what is frontend developer",
+      "answer": "frontend development refers to the process of creating user friendly ui part for websites"
+    },
+    {
+      "question": "What is the full form HTML",
+      "answer": "Hyper Text Markup Language"
+    },
+    {
+      "question": "what is the full form of CSS",
+      "answer": "Cascading Style Sheet"
+    },
+    {
+      "question": "how can we give custom styling to webpage",
+      "answer": "by using css we can give custom styling"
+    }
+  ]
+}
