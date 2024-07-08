@@ -35,6 +35,7 @@ import { AuthProvider } from "./components/24th-Problem/UserAuthContext";
 import UserAuthenticationSystem from "./components/24th-Problem/UserAuthenticationSystem";
 import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
 import FAQ from "./components/31th-Probem/FAQ";
+import { OTP } from "./components/32th-Problem/OTPcreation";
 
 // it should for 15th and 16th problem as props
 const listofNames = [
@@ -158,6 +159,9 @@ function App() {
 
       {/* 31th Probem */}
       <FAQ />
+
+      {/* 32th Problem */}
+      <OTP />
     </div>
   );
 }
