@@ -37,6 +37,7 @@ import React from "react";
 // import FAQ from "./components/31th-Probem/FAQ";
 // import { OTP } from "./components/32th-Problem/OTPcreation";
 import Stepper from "./components/33th-Problem/Stepper";
+import Tabs from "./components/34th-Problem/Tabs";
 
 // it should for 15th and 16th problem as props
 // const listofNames = [
@@ -165,7 +166,10 @@ function App() {
       {/* <OTP /> */}
 
       {/* 33th Problem */}
-      <Stepper />
+      {/* <Stepper /> */}
+
+      {/* 34th Problem */}
+      <Tabs />
     </div>
   );
 }
