@@ -36,8 +36,9 @@ import React from "react";
 // import DragableComponentWithReducer from "./components/25th-Problem/DragableComponentWithReducer";
 // import FAQ from "./components/31th-Probem/FAQ";
 // import { OTP } from "./components/32th-Problem/OTPcreation";
-import Stepper from "./components/33th-Problem/Stepper";
-import Tabs from "./components/34th-Problem/Tabs";
+// import Stepper from "./components/33th-Problem/Stepper";
+// import Tabs from "./components/34th-Problem/Tabs";
+import GridLight from "./components/35th-Problem/GridLight";
 
 // it should for 15th and 16th problem as props
 // const listofNames = [
@@ -169,7 +170,10 @@ function App() {
       {/* <Stepper /> */}
 
       {/* 34th Problem */}
-      <Tabs />
+      {/* <Tabs /> */}
+
+      {/* 35th Problem */}
+      <GridLight />
     </div>
   );
 }
