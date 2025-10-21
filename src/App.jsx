@@ -38,7 +38,8 @@ import React from "react";
 // import { OTP } from "./components/32th-Problem/OTPcreation";
 // import Stepper from "./components/33th-Problem/Stepper";
 // import Tabs from "./components/34th-Problem/Tabs";
-import GridLight from "./components/35th-Problem/GridLight";
+// import GridLight from "./components/35th-Problem/GridLight";
+import MemoryGame from "./components/36th-Problem/MemoryGame";
 
 // it should for 15th and 16th problem as props
 // const listofNames = [
@@ -173,7 +174,10 @@ function App() {
       {/* <Tabs /> */}
 
       {/* 35th Problem */}
-      <GridLight />
+      {/* <GridLight /> */}
+
+      {/* 36th Problem */}
+      <MemoryGame />
     </div>
   );
 }

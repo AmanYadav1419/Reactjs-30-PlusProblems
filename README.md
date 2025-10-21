@@ -1,6 +1,6 @@
 # React.js Practice Problems Collection 🚀
 
-A comprehensive collection of **35 React.js practice problems** designed to help developers master React concepts from beginner to advanced levels. Each problem focuses on specific React features and real-world scenarios.
+A comprehensive collection of **36 React.js practice problems** designed to help developers master React concepts from beginner to advanced levels. Each problem focuses on specific React features and real-world scenarios.
 
 ## 📋 Table of Contents
 
@@ -13,7 +13,7 @@ A comprehensive collection of **35 React.js practice problems** designed to help
   - [📚 Practice Problems](#-practice-problems)
     - [Beginner Level (1-10)](#beginner-level-1-10)
     - [Intermediate Level (11-20)](#intermediate-level-11-20)
-    - [Advanced Level (21-35)](#advanced-level-21-35)
+    - [Advanced Level (21-36)](#advanced-level-21-36)
   - [🎮 How to Run Problems](#-how-to-run-problems)
     - [Example:](#example)
   - [➕ Adding New Problems](#-adding-new-problems)
@@ -115,7 +115,7 @@ Before running this project, make sure you have:
 | **19** | [DarkandLightTheme](./src/components/19th-Problem/DarkandLightTheme.jsx) | Theme switching system | Context API, Theme Management |
 | **20** | [ShoppingCart](./src/components/20th-Problem/ShoppingCart.jsx) | Shopping cart functionality | Context API, Complex State |
 
-### Advanced Level (21-35)
+### Advanced Level (21-36)
 
 | Problem | Component | Description | Key Concepts |
 |---------|-----------|-------------|-------------|
@@ -134,6 +134,7 @@ Before running this project, make sure you have:
 | **33** | [Stepper](./src/components/33th-Problem/Stepper.jsx) | Multi-step form stepper | Step Navigation, Form Wizards |
 | **34** | [Tabs](./src/components/34th-Problem/Tabs.jsx) | Tabbed interface component | Tab Navigation, Content Switching |
 | **35** | [GridLight](./src/components/35th-Problem/GridLight.jsx) | Interactive grid light game | Game Logic, Animation, Timers |
+| **36** | [MemoryGame](./src/components/36th-Problem/MemoryGame.jsx) | Memory card matching game with timer | Game Logic, Timer Management, State Complexity |
 
 ## 🎮 How to Run Problems
 
@@ -249,7 +250,7 @@ Start with problems 1-10 to build fundamental React knowledge
 Focus on problems 11-20 to learn advanced patterns and API integration
 
 ### For Advanced Developers:
-Tackle problems 21-35 to master complex state management and advanced React patterns
+Tackle problems 21-36 to master complex state management and advanced React patterns
 
 ---
 
