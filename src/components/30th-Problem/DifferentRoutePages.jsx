@@ -11,7 +11,7 @@ const DifferentRoutePages = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="" element={<Home />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
         {/* more can be created similar like these  */}

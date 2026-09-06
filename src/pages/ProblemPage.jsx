@@ -88,7 +88,7 @@ const LoadingSpinner = () => (
 const ProblemPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const problemId = parseInt(id, 10);
+    const problemId = /^\d+$/.test(id) ? parseInt(id, 10) : NaN;
 
     const problem = useMemo(
         () => problems.find((p) => p.id === problemId),
