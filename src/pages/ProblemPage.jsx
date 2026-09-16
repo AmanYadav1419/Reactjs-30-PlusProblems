@@ -1,5 +1,7 @@
 import React, { Suspense, lazy, useMemo, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowLeft, CaretLeft, CaretRight, Code, Eye, FileCode, FolderOpen } from "@phosphor-icons/react";
 import problems from "../data/problems";
 import { difficultyColors } from "../data/problems";
 import CodeViewer from "../components/shared/CodeViewer";
@@ -100,12 +102,13 @@ const ProblemPage = () => {
 
     if (!problem) {
         return (
-            <div className="problem-page">
-                <div className="problem-not-found">
-                    <h2>Problem Not Found</h2>
-                    <p>The problem #{id} does not exist.</p>
-                    <Link to="/" className="back-home-btn">
-                        ← Back to Problems
+            <div className="min-h-screen bg-[#09090b] flex flex-col items-center justify-center text-white">
+                <div className="glass-panel p-12 rounded-3xl flex flex-col items-center text-center max-w-md">
+                    <h2 className="text-3xl font-bold mb-2">Problem Not Found</h2>
+                    <p className="text-zinc-400 mb-8">The problem #{id} does not exist in our registry.</p>
+                    <Link to="/" className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-xl font-medium hover:bg-zinc-200 transition-colors">
+                        <ArrowLeft weight="bold" />
+                        Back to Library
                     </Link>
                 </div>
             </div>
@@ -160,234 +163,156 @@ const ProblemPage = () => {
     };
 
     return (
-        <div className="problem-page">
-            {/* Header */}
-            <header className="problem-header">
-                <Link to="/" className="back-home-link">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path
-                            d="M12.5 15L7.5 10L12.5 5"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                    All Problems
-                </Link>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="min-h-[100dvh] bg-[#09090b] text-[#fafafa] font-sans pb-12"
+        >
+            {/* Minimal Header */}
+            <header className="sticky top-0 z-50 bg-[#09090b]/80 backdrop-blur-xl border-b border-white/5 py-4 px-6 mb-10">
+                <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+                    <Link to="/" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm font-medium">
+                        <ArrowLeft size={16} />
+                        Library
+                    </Link>
 
-                <div className="problem-nav-controls">
-                    <button
-                        className="nav-btn"
-                        onClick={() => prevProblem && navigate(`/problem/${prevProblem.id}`)}
-                        disabled={!prevProblem}
-                        title={prevProblem ? `Previous: ${prevProblem.title}` : ""}
-                    >
-                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                            <path
-                                d="M12.5 15L7.5 10L12.5 5"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                        Prev
-                    </button>
-                    <span className="nav-indicator">
-                        {problemId} / {problems.length}
-                    </span>
-                    <button
-                        className="nav-btn"
-                        onClick={() => nextProblem && navigate(`/problem/${nextProblem.id}`)}
-                        disabled={!nextProblem}
-                        title={nextProblem ? `Next: ${nextProblem.title}` : ""}
-                    >
-                        Next
-                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                            <path
-                                d="M7.5 15L12.5 10L7.5 5"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                    </button>
+                    <div className="flex items-center gap-4 bg-white/[0.02] border border-white/5 rounded-full p-1">
+                        <button
+                            onClick={() => prevProblem && navigate(`/problem/${prevProblem.id}`)}
+                            disabled={!prevProblem}
+                            className={`p-2 rounded-full transition-colors ${prevProblem ? 'hover:bg-white/10 text-white' : 'text-zinc-600 cursor-not-allowed'}`}
+                        >
+                            <CaretLeft size={16} />
+                        </button>
+                        <span className="font-mono text-xs text-zinc-500 font-medium px-2">
+                            {problemId.toString().padStart(2, '0')} <span className="text-zinc-700">/</span> {problems.length.toString().padStart(2, '0')}
+                        </span>
+                        <button
+                            onClick={() => nextProblem && navigate(`/problem/${nextProblem.id}`)}
+                            disabled={!nextProblem}
+                            className={`p-2 rounded-full transition-colors ${nextProblem ? 'hover:bg-white/10 text-white' : 'text-zinc-600 cursor-not-allowed'}`}
+                        >
+                            <CaretRight size={16} />
+                        </button>
+                    </div>
                 </div>
             </header>
 
-            {/* Problem Info */}
-            <section className="problem-info">
-                <div className="problem-info-top">
-                    <span className="problem-number">#{problem.id}</span>
-                    <span
-                        className="problem-difficulty-badge"
-                        style={{
-                            background: colors.bg,
-                            color: colors.text,
-                            borderColor: colors.border,
-                        }}
-                    >
-                        {problem.difficulty}
-                    </span>
-                </div>
-                <h1 className="problem-title">{problem.title}</h1>
-                <p className="problem-description">{problem.description}</p>
-                <div className="problem-concepts">
-                    {problem.concepts.map((concept, i) => (
-                        <span key={i} className="concept-tag">
-                            {concept}
-                        </span>
-                    ))}
-                </div>
-            </section>
+            <main className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-            {/* File References */}
-            <section className="file-references">
-                <h3 className="file-references-title">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M13 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V9L13 2Z"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                        <polyline
-                            points="13 2 13 9 20 9"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                    Source Files
-                </h3>
-                <div className="file-list">
-                    {problem.files.map((file, i) => (
-                        <div key={i} className="file-item">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M14.5 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7.5L14.5 2Z"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                            <code>{file}</code>
+                {/* Left Column: Metadata */}
+                <div className="lg:col-span-4 flex flex-col space-y-8 lg:sticky lg:top-28">
+                    <section className="flex flex-col gap-4">
+                        <div className="flex items-center gap-3">
+                            <span className="font-mono text-xl font-bold text-zinc-500">#{problem.id.toString().padStart(2, '0')}</span>
+                            <span
+                                className="text-[11px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-md"
+                                style={{ background: colors.bg, color: colors.text }}
+                            >
+                                {problem.difficulty}
+                            </span>
                         </div>
-                    ))}
+                        <h1 className="text-4xl font-extrabold tracking-tight">{problem.title}</h1>
+                        <p className="text-zinc-400 leading-relaxed text-sm">{problem.description}</p>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                            {problem.concepts.map((concept, i) => (
+                                <span key={i} className="text-xs font-medium text-zinc-300 bg-[#18181c] px-2.5 py-1.5 rounded-lg border border-white/5">
+                                    {concept}
+                                </span>
+                            ))}
+                        </div>
+                    </section>
+
+                    <section className="glass-panel rounded-2xl p-6">
+                        <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
+                            <FileCode size={16} /> Source Files
+                        </h3>
+                        <div className="flex flex-col gap-2 mb-4">
+                            {problem.files.map((file, i) => (
+                                <div key={i} className="flex items-start gap-2 bg-black/20 p-2.5 rounded-xl border border-white/5">
+                                    <FileCode size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                                    <code className="text-xs font-mono text-zinc-300 break-all">{file}</code>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="flex items-start gap-2 pt-4 border-t border-white/5 text-xs text-zinc-500">
+                            <FolderOpen size={16} className="mt-0.5 shrink-0" />
+                            <span>
+                                Folder: <code className="font-mono text-zinc-300">src/components/{problem.folder}/</code>
+                            </span>
+                        </p>
+                    </section>
                 </div>
-                <p className="folder-reference">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M22 19C22 19.5304 21.7893 20.0391 21.4142 20.4142C21.0391 20.7893 20.5304 21 20 21H4C3.46957 21 2.96086 20.7893 2.58579 20.4142C2.21071 20.0391 2 19.5304 2 19V5C2 4.46957 2.21071 3.96086 2.58579 3.58579C2.96086 3.21071 3.46957 3 4 3H9L11 6H20C20.5304 6 21.0391 6.21071 21.4142 6.58579C21.7893 6.96086 22 7.46957 22 8V19Z"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                    <span>
-                        Folder: <code>src/components/{problem.folder}/</code>
-                    </span>
-                </p>
-            </section>
 
-            {/* Component Render Area with Preview / Code toggle */}
-            <section className="component-render-area">
-                <div className="render-area-header">
-                    {/* macOS-style traffic lights */}
-                    <span className="render-area-dot red"></span>
-                    <span className="render-area-dot yellow"></span>
-                    <span className="render-area-dot green"></span>
+                {/* Right Column: Interaction Arena */}
+                <div className="lg:col-span-8 flex flex-col">
+                    <section className="glass-panel rounded-[2rem] overflow-hidden flex flex-col border-white/5 shadow-2xl">
 
-                    {/* Toggle */}
-                    <div className="render-tab-toggle" role="tablist" aria-label="View mode">
-                        <button
-                            id="tab-preview"
-                            role="tab"
-                            aria-selected={activeTab === "preview"}
-                            className={`render-tab-btn ${activeTab === "preview" ? "render-tab-btn--active" : ""}`}
-                            onClick={() => setActiveTab("preview")}
-                        >
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
-                            </svg>
-                            Preview
-                        </button>
-                        <button
-                            id="tab-code"
-                            role="tab"
-                            aria-selected={activeTab === "code"}
-                            className={`render-tab-btn ${activeTab === "code" ? "render-tab-btn--active" : ""}`}
-                            onClick={() => setActiveTab("code")}
-                        >
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                                <polyline points="16 18 22 12 16 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <polyline points="8 6 2 12 8 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            Code
-                        </button>
+                        {/* Traffic + Toggle Header */}
+                        <div className="flex items-center justify-between px-6 py-4 bg-[#111116] border-b border-white/5">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                            </div>
+
+                            <div className="flex items-center gap-1 bg-black/40 p-1 rounded-xl border border-white/5">
+                                <button
+                                    onClick={() => setActiveTab("preview")}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all ${activeTab === "preview" ? "bg-[#1f1f26] text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                                        }`}
+                                >
+                                    <Eye size={16} /> Preview
+                                </button>
+                                <button
+                                    onClick={() => setActiveTab("code")}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all ${activeTab === "code" ? "bg-[#1f1f26] text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                                        }`}
+                                >
+                                    <Code size={16} /> Code
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Render Area */}
+                        <div className="min-h-[500px] flex flex-col bg-[#0d0d12]">
+                            {activeTab === "preview" ? (
+                                <div className="flex-1 p-8 overflow-auto flex flex-col items-center justify-center">
+                                    <Suspense fallback={<LoadingSpinner />}>
+                                        <div className="w-full max-w-full">
+                                            {renderComponent()}
+                                        </div>
+                                    </Suspense>
+                                </div>
+                            ) : (
+                                <CodeViewer files={problem.files ?? []} />
+                            )}
+                        </div>
+                    </section>
+
+                    {/* Bottom Inline Footer (Desktop only) */}
+                    <div className="hidden lg:flex items-center justify-between mt-8">
+                        {prevProblem ? (
+                            <Link to={`/problem/${prevProblem.id}`} className="group flex flex-col items-start px-6 py-4 rounded-2xl glass-panel hover:bg-white/[0.05] transition-all">
+                                <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-1 flex items-center gap-1">
+                                    <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Previous
+                                </span>
+                                <span className="text-sm font-medium text-zinc-300">{prevProblem.title}</span>
+                            </Link>
+                        ) : <div />}
+
+                        {nextProblem ? (
+                            <Link to={`/problem/${nextProblem.id}`} className="group flex flex-col items-end px-6 py-4 rounded-2xl glass-panel hover:bg-white/[0.05] transition-all">
+                                <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-1 flex items-center gap-1">
+                                    Next <CaretRight size={12} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+                                </span>
+                                <span className="text-sm font-medium text-zinc-300">{nextProblem.title}</span>
+                            </Link>
+                        ) : <div />}
                     </div>
                 </div>
-
-                {activeTab === "preview" ? (
-                    <div className="render-area-content">
-                        <Suspense fallback={<LoadingSpinner />}>
-                            {renderComponent()}
-                        </Suspense>
-                    </div>
-                ) : (
-                    <CodeViewer files={problem.files ?? []} />
-                )}
-            </section>
-
-            {/* Bottom Navigation */}
-            <footer className="problem-footer-nav">
-                {prevProblem ? (
-                    <Link to={`/problem/${prevProblem.id}`} className="footer-nav-btn prev">
-                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                            <path
-                                d="M12.5 15L7.5 10L12.5 5"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                        <div>
-                            <span className="footer-nav-label">Previous</span>
-                            <span className="footer-nav-title">{prevProblem.title}</span>
-                        </div>
-                    </Link>
-                ) : (
-                    <div />
-                )}
-                {nextProblem ? (
-                    <Link to={`/problem/${nextProblem.id}`} className="footer-nav-btn next">
-                        <div>
-                            <span className="footer-nav-label">Next</span>
-                            <span className="footer-nav-title">{nextProblem.title}</span>
-                        </div>
-                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                            <path
-                                d="M7.5 15L12.5 10L7.5 5"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                    </Link>
-                ) : (
-                    <div />
-                )}
-            </footer>
-        </div>
+            </main>
+        </motion.div>
     );
 };
 
