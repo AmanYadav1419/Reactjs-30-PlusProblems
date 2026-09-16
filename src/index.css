@@ -1036,3 +1036,326 @@ body {
 .render-area-content a {
   color: var(--accent-primary);
 }
+
+/* ============================================
+   PREVIEW / CODE TOGGLE
+   ============================================ */
+
+.render-tab-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+}
+
+.render-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.render-tab-btn:hover {
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+}
+
+.render-tab-btn--active {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   CODE VIEWER
+   ============================================ */
+
+.cv-container {
+  display: flex;
+  flex-direction: column;
+  background: #0d0d14;
+  min-height: 300px;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+/* File tabs (multi-file) */
+.cv-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border-color);
+  background: #0a0a10;
+  flex-shrink: 0;
+}
+
+.cv-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.cv-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  flex-shrink: 0;
+}
+
+.cv-tab:hover {
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.03);
+}
+
+.cv-tab--active {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-primary);
+  background: rgba(99,102,241,0.05);
+}
+
+.cv-tab-name {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Toolbar above code */
+.cv-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.cv-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 14px;
+  background: #111119;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cv-file-path {
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.cv-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cv-line-count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Copy button */
+.cv-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.cv-copy-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.cv-copy-btn--copied {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+/* Scrollable code area */
+.cv-scroll-wrap {
+  flex: 1;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.cv-scroll-wrap::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.cv-scroll-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cv-scroll-wrap::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+/* The <pre> wrapper — flex row: gutter | content */
+.cv-pre {
+  display: flex;
+  align-items: flex-start;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  tab-size: 2;
+  white-space: pre;
+  margin: 0;
+  min-width: max-content; /* allow horizontal scroll */
+}
+
+/* Line number gutter */
+.cv-gutter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 12px 10px 12px 16px;
+  background: #0d0d14;
+  border-right: 1px solid rgba(255,255,255,0.04);
+  user-select: none;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.cv-line-num {
+  color: #3d3d55;
+  font-size: 0.74rem;
+  min-width: 2.5ch;
+  text-align: right;
+  display: block;
+}
+
+/* Code content area */
+.cv-content {
+  padding: 12px 24px 24px 16px;
+  flex: 1;
+}
+
+.cv-code {
+  display: block;
+}
+
+/* ── Syntax token colours ── */
+
+.cv-tok-keyword   { color: #c792ea; font-weight: 500; }
+.cv-tok-string    { color: #c3e88d; }
+.cv-tok-comment   { color: #546e7a; font-style: italic; }
+.cv-tok-number    { color: #f78c6c; }
+.cv-tok-jsx-bracket { color: #89ddff; }
+.cv-tok-punctuation { color: #82aaff; }
+.cv-tok-identifier { color: #eeffff; }
+.cv-tok-plain     { color: #eeffff; }
+
+/* ============================================
+   RESPONSIVE — Code Viewer
+   ============================================ */
+
+@media (max-width: 768px) {
+  .cv-container {
+    max-height: 480px;
+  }
+
+  .cv-pre {
+    font-size: 0.72rem;
+  }
+
+  .cv-tab {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+  }
+
+  .cv-tab-name {
+    max-width: 90px;
+  }
+
+  .cv-toolbar {
+    padding: 6px 10px;
+  }
+
+  .cv-file-path {
+    font-size: 0.65rem;
+    max-width: 120px;
+  }
+
+  .render-tab-btn {
+    padding: 5px 9px;
+    font-size: 0.75rem;
+    gap: 3px;
+  }
+
+  .render-tab-toggle {
+    padding: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cv-container {
+    max-height: 380px;
+  }
+
+  .cv-gutter {
+    padding: 12px 6px 12px 10px;
+  }
+
+  .cv-content {
+    padding: 12px 12px 24px 10px;
+  }
+
+  .cv-pre {
+    font-size: 0.68rem;
+  }
+
+  .render-tab-btn span,
+  .render-tab-btn svg {
+    display: flex;
+  }
+
+  /* On very small screens, hide icon in toggle to save space */
+  .render-tab-btn svg {
+    display: none;
+  }
+}

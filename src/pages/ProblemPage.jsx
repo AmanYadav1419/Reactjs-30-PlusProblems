@@ -1,7 +1,8 @@
-import React, { Suspense, lazy, useMemo } from "react";
+import React, { Suspense, lazy, useMemo, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import problems from "../data/problems";
 import { difficultyColors } from "../data/problems";
+import CodeViewer from "../components/shared/CodeViewer";
 
 // Lazy load all components for code-splitting
 const componentMap = {
@@ -89,6 +90,8 @@ const ProblemPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const problemId = /^\d+$/.test(id) ? parseInt(id, 10) : NaN;
+    // Reset to preview whenever the user navigates to a different problem
+    const [activeTab, setActiveTab] = useState("preview");
 
     const problem = useMemo(
         () => problems.find((p) => p.id === problemId),
@@ -293,19 +296,54 @@ const ProblemPage = () => {
                 </p>
             </section>
 
-            {/* Component Render Area */}
+            {/* Component Render Area with Preview / Code toggle */}
             <section className="component-render-area">
                 <div className="render-area-header">
+                    {/* macOS-style traffic lights */}
                     <span className="render-area-dot red"></span>
                     <span className="render-area-dot yellow"></span>
                     <span className="render-area-dot green"></span>
-                    <span className="render-area-title">Live Preview</span>
+
+                    {/* Toggle */}
+                    <div className="render-tab-toggle" role="tablist" aria-label="View mode">
+                        <button
+                            id="tab-preview"
+                            role="tab"
+                            aria-selected={activeTab === "preview"}
+                            className={`render-tab-btn ${activeTab === "preview" ? "render-tab-btn--active" : ""}`}
+                            onClick={() => setActiveTab("preview")}
+                        >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
+                            </svg>
+                            Preview
+                        </button>
+                        <button
+                            id="tab-code"
+                            role="tab"
+                            aria-selected={activeTab === "code"}
+                            className={`render-tab-btn ${activeTab === "code" ? "render-tab-btn--active" : ""}`}
+                            onClick={() => setActiveTab("code")}
+                        >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <polyline points="16 18 22 12 16 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <polyline points="8 6 2 12 8 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            Code
+                        </button>
+                    </div>
                 </div>
-                <div className="render-area-content">
-                    <Suspense fallback={<LoadingSpinner />}>
-                        {renderComponent()}
-                    </Suspense>
-                </div>
+
+                {activeTab === "preview" ? (
+                    <div className="render-area-content">
+                        <Suspense fallback={<LoadingSpinner />}>
+                            {renderComponent()}
+                        </Suspense>
+                    </div>
+                ) : (
+                    <CodeViewer files={problem.files ?? []} />
+                )}
             </section>
 
             {/* Bottom Navigation */}
