@@ -6,8 +6,6 @@
 import React, { useState } from "react";
 import Cell from "./Cell";
 
-import "./Grid.css";
-
 const GridLight = () => {
   // create a state to maintain the order , to remove them in reverse order.
   const [order, setOrder] = useState([]);
@@ -62,28 +60,28 @@ const GridLight = () => {
   };
 
   return (
-    <div className="wrapper">
-      <div
-        className="grid-class"
-        style={{ gridTemplateColumns: `repeat(${config[0].length}, 1fr)` }}
-      >
-        {
-          // basically to reomove the two dimensional array and convert them like => [1,1,1,1,0,] like this
-          config.flat(1).map((value, index) => {
-            // it accepts two props
-            return value ? (
-              <Cell
-                key={index}
-                filled={order.includes(index)}
-                onClick={() => activateCells(index)}
-                isDisabled={order.includes(index) || isDeactivating}
-              />
-            ) : (
-              // if value is true then return cell otherwise return blank i.e span, basically for middle element
-              <span />
-            );
-          })
-        }
+    <div className="flex flex-col items-center justify-center p-4 sm:p-6 w-full max-w-sm mx-auto">
+      <div className="bg-white/5 border border-white/10 shadow-[inner_0_1px_0_rgba(255,255,255,0.1)] rounded-[2rem] p-8 w-full flex flex-col items-center gap-6">
+        <h2 className="text-zinc-400 font-medium text-sm tracking-widest uppercase">Grid Light</h2>
+        <div
+          className="grid gap-3 w-full max-w-[280px]"
+          style={{ gridTemplateColumns: `repeat(${config[0].length}, 1fr)` }}
+        >
+          {
+            config.flat(1).map((value, index) => {
+              return value ? (
+                <Cell
+                  key={index}
+                  filled={order.includes(index)}
+                  onClick={() => activateCells(index)}
+                  isDisabled={order.includes(index) || isDeactivating}
+                />
+              ) : (
+                <div key={index} className="opacity-0 pointer-events-none" />
+              );
+            })
+          }
+        </div>
       </div>
     </div>
   );
