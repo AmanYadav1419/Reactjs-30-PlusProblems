@@ -83,9 +83,9 @@ const MemoryGame = () => {
     setInitialReveal(true);
 
     // after 2 seconds , the cards face will be flipped
-    setTimeout(()=>{
+    setTimeout(() => {
       setInitialReveal(false);
-    },2000)
+    }, 2000)
   };
 
   // function to check match of the numbers, is it correct or not
@@ -187,92 +187,105 @@ const MemoryGame = () => {
   }, [won, timeUp]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-300 p-4">
-      <h1 className="text-3xl font-bold mb-6">Memory Game</h1>
-      {/* input */}
-      <div className="mb-4">
-        <label htmlFor="gridSize" className="mr-2">
-          {" "}
-          Grid Size : (max 10)
-        </label>
-        <input
-          id="gridSize"
-          type="number"
-          min="2"
-          max="10"
-          value={gridSize}
-          onChange={handleGridSizeChange}
-          className="border-2 border-gray-500 rounded px-2 py-1"
-        />
-      </div>
-
-      {/* input div for the timer selection */}
-      <div className="mb-4">
-        <label htmlFor="timeSelect" className="mr-2">
-          Select Time Limit (seconds):
-        </label>
-        <select
-          id="timeSelect"
-          value={selectedTime}
-          onChange={(e) => setSelectedTime(parseInt(e.target.value))}
-          className="border-2 border-gray-500 rounded px-2 py-1"
-        >
-          <option value={30}>30 seconds</option>
-          <option value={60}>60 seconds</option>
-          <option value={90}>90 seconds</option>
-          <option value={120}>120 seconds</option>
-        </select>
-      </div>
-
-      {/* displaying the timer */}
-      <div className="mb-4 text-xl font-semibold">Time Left: {timeLeft}s</div>
-
-      {/* Game board */}
-      <div
-        className={`grid gap-2 mb-4`}
-        style={{
-          gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
-          width: `min(100%, ${gridSize * 4.5}rem)`,
-        }}
-      >
-        {cards.map((card) => (
-          <div
-            onClick={() => handleClick(card.id)}
-            key={card.id}
-            className={`aspect-square flex items-center justify-center text-xl font-bold rounded-lg cursor-pointer transition-all duration-300 ${
-              isFlipped(card.id)
-                ? isSolved(card.id)
-                  ? "bg-green-500 text-white"
-                  : "bg-blue-500 text-white"
-                : "bg-white text-gray-800"
-            }`}
-          >
-            {isFlipped(card.id) ? card.number : "?"}
+    <div className="flex flex-col items-center p-4 sm:p-6 w-full max-w-2xl mx-auto">
+      <div className="bg-white/5 border border-white/10 shadow-[inner_0_1px_0_rgba(255,255,255,0.1)] rounded-[2rem] p-8 w-full flex flex-col items-center gap-8">
+        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/5 pb-6">
+          <h2 className="text-zinc-400 font-medium text-sm tracking-widest uppercase">Memory Protocol</h2>
+          <div className="flex gap-4">
+            <div className="flex flex-col text-sm border-r border-white/10 pr-4">
+              <label htmlFor="gridSize" className="text-zinc-500 font-medium text-xs mb-1 uppercase tracking-widest">
+                Grid Size
+              </label>
+              <input
+                id="gridSize"
+                type="number"
+                min="2"
+                max="10"
+                value={gridSize}
+                onChange={handleGridSizeChange}
+                className="bg-[#18181c] border border-white/10 rounded-lg px-3 py-2 text-white outline-none w-20 text-center"
+              />
+            </div>
+            <div className="flex flex-col text-sm border-r border-white/10 pr-4">
+              <label htmlFor="timeSelect" className="text-zinc-500 font-medium text-xs mb-1 uppercase tracking-widest">
+                Time Limit
+              </label>
+              <select
+                id="timeSelect"
+                value={selectedTime}
+                onChange={(e) => setSelectedTime(parseInt(e.target.value))}
+                className="bg-[#18181c] border border-white/10 rounded-lg px-3 py-2 text-white outline-none"
+              >
+                <option value={30}>30s</option>
+                <option value={60}>60s</option>
+                <option value={90}>90s</option>
+                <option value={120}>120s</option>
+              </select>
+            </div>
+            <div className="flex flex-col text-sm items-center justify-center pl-2">
+              <span className="text-zinc-500 font-medium text-xs mb-1 uppercase tracking-widest">Time Left</span>
+              <span className={`text-xl font-bold font-mono ${timeLeft < 10 ? 'text-red-400' : 'text-blue-400'}`}>
+                {timeLeft}s
+              </span>
+            </div>
           </div>
-        ))}
+        </div>
+
+        {/* Game board */}
+        <div
+          className="grid gap-3 w-full"
+          style={{
+            gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
+            width: `min(100%, ${gridSize * 4.5}rem)`,
+          }}
+        >
+          {cards.map((card) => (
+            <div
+              onClick={() => handleClick(card.id)}
+              key={card.id}
+              className={`aspect-square flex items-center justify-center text-2xl font-bold rounded-xl cursor-pointer transition-all duration-500 transform-gpu ${isFlipped(card.id)
+                  ? isSolved(card.id)
+                    ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                    : "bg-blue-500 border-blue-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                  : "bg-[#18181c] border-white/10 text-transparent hover:bg-white/10 hover:scale-105 border"
+                }`}
+              style={{
+                transform: isFlipped(card.id) ? "rotateY(0deg)" : "rotateY(180deg)",
+                borderWidth: '1px'
+              }}
+            >
+              <div
+                className="transition-opacity duration-300"
+                style={{ opacity: isFlipped(card.id) ? 1 : 0 }}
+              >
+                {card.number}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Status Messaging */}
+        <div className="min-h-[60px] flex items-center justify-center flex-col gap-4">
+          {won && (
+            <div className="text-xl tracking-wider uppercase font-bold text-emerald-400">
+              Protocol Complete
+            </div>
+          )}
+
+          {timeUp && !won && (
+            <div className="text-xl tracking-wider uppercase font-bold text-red-400">
+              Session Expired
+            </div>
+          )}
+
+          <button
+            onClick={initalisedGame}
+            className="bg-white text-black px-8 py-3 rounded-xl hover:bg-zinc-200 active:scale-95 transition-all text-sm font-bold uppercase tracking-widest mt-2"
+          >
+            {won ? "Restart Protocol" : "Reset Grid"}
+          </button>
+        </div>
       </div>
-
-      {/* Result of won game */}
-      {won && (
-        <div className="mt-4 mb-4 text-4xl font-bold text-green-600 animate-bounce">
-          You Won the Game!!
-        </div>
-      )}
-
-      {/* Result of timeup game */}
-      {timeUp && !won && (
-        <div className="mt-4 text-4xl font-bold text-red-600 animate-bounce">
-          Oops! Time's up. Try Again.
-        </div>
-      )}
-
-      {/* Reset / Play Again Game button */}
-      <button
-        onClick={initalisedGame}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-500 transition-all duration-100 font-bold text-3xl"
-      >
-        {won ? "Play Again" : "Reset"}
-      </button>
     </div>
   );
 };
