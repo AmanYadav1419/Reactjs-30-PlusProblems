@@ -42,13 +42,24 @@ const DragableComponentWithReducer = () => {
   };
 
   return (
-    <div
-      onMouseDown={handleMousedown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      style={{ left: boxState.left, top: boxState.top, position: "absolute" }}
-    >
-      <h2>Pakad ke Leke ja</h2>
+    <div className="flex flex-col items-center p-4 sm:p-6 w-full h-[400px] border border-white/5 rounded-2xl relative overflow-hidden bg-black/20">
+      <div className="absolute top-4 left-4">
+        <h2 className="text-zinc-500 font-medium text-xs tracking-widest uppercase">Draggable Area</h2>
+      </div>
+      <div
+        onMouseDown={handleMousedown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseUp}
+        className={`absolute p-6 rounded-2xl border transition-shadow select-none flex flex-col items-center justify-center gap-2 ${isDragging
+            ? 'bg-blue-500/20 border-blue-400/50 shadow-[0_0_30px_rgba(59,130,246,0.3)] cursor-grabbing'
+            : 'bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/10 cursor-grab backdrop-blur-xl shadow-xl'
+          }`}
+        style={{ left: boxState.left, top: boxState.top }}
+      >
+        <div className="w-10 h-1 rounded-full bg-white/20 mb-2" />
+        <h2 className="text-sm font-semibold text-white tracking-wider whitespace-nowrap">Drag Me Around</h2>
+      </div>
     </div>
   );
 };

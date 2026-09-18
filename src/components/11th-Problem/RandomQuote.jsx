@@ -19,10 +19,15 @@ const RandomQuote = () => {
   const qoute = ArrayofQuotes[randomIndex];
 
   return (
-    <div>
-        {qoute}
+    <div className="flex flex-col items-center p-4 sm:p-6 w-full max-w-md mx-auto">
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-8 w-full text-center flex flex-col gap-4">
+        <h2 className="text-zinc-400 font-medium text-sm tracking-widest uppercase">Random Quote</h2>
+        <blockquote className="text-xl text-white font-medium italic leading-relaxed">
+          &ldquo;{qoute}&rdquo;
+        </blockquote>
+      </div>
     </div>
-  ) 
+  )
 };
 
 export default RandomQuote;
