@@ -52,28 +52,39 @@ const PaginationWithReducer = () => {
   };
 
   return (
-    <div>
-      <h1>Pagination using useReducer</h1>
+    <div className="flex flex-col items-center p-4 sm:p-6 w-full max-w-md mx-auto">
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-8 w-full flex flex-col gap-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-zinc-400 font-medium text-sm tracking-widest uppercase">Reducer Pagination</h2>
+          <span className="text-xs font-mono text-zinc-500">
+            Page {paginationState.currentPage} / {Math.ceil(paginationState.totalItem / itemsPerPage)}
+          </span>
+        </div>
 
-      <ul>
-        {displayedItems.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+        <ul className="flex flex-col gap-2 min-h-[220px]">
+          {displayedItems.map((item, index) => (
+            <li key={index} className="px-4 py-3 bg-[#18181c] border border-white/5 rounded-xl text-sm text-zinc-300">
+              {item}
+            </li>
+          ))}
+        </ul>
 
-      <div>
-        <button
-          onClick={() => handlePageClick(paginationState.currentPage - 1)}
-          disabled={paginationState.currentPage === 1}
-        >
-          Previous
-        </button>
-        <button
-          onClick={() => handlePageClick(paginationState.currentPage + 1)}
-          disabled={endIndex >= data.length}
-        >
-          Next
-        </button>
+        <div className="flex items-center justify-between gap-4 pt-4 border-t border-white/5">
+          <button
+            onClick={() => handlePageClick(paginationState.currentPage - 1)}
+            disabled={paginationState.currentPage === 1}
+            className="flex-1 py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-[#18181c] border border-white/10 text-zinc-400 hover:bg-white/10 hover:text-white disabled:hover:bg-[#18181c] disabled:hover:text-zinc-400"
+          >
+            ← Previous
+          </button>
+          <button
+            onClick={() => handlePageClick(paginationState.currentPage + 1)}
+            disabled={endIndex >= data.length}
+            className="flex-1 py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white disabled:bg-[#18181c] disabled:border disabled:border-white/10 disabled:text-zinc-400"
+          >
+            Next →
+          </button>
+        </div>
       </div>
     </div>
   );
