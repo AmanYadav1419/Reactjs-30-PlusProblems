@@ -1,7 +1,7 @@
 // question :- Create a differnet route pages component using useEffect to update the document title with the visited page whenever it changes.
 
 import React from "react";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Contact from "./Contact";
 import About from "./About";
@@ -17,9 +17,19 @@ const DifferentRoutePages = () => {
           <span className="font-bold text-white tracking-widest text-sm uppercase">AppFrame™</span>
           <div className="h-4 w-px bg-white/10"></div>
           <nav className="flex gap-6">
-            <a href="#/problem/30" className="text-sm font-medium hover:text-white text-zinc-400 transition-colors">Home</a>
-            <a href="#/problem/30/about" className="text-sm font-medium hover:text-white text-zinc-400 transition-colors">About</a>
-            <a href="#/problem/30/contact" className="text-sm font-medium hover:text-white text-zinc-400 transition-colors">Contact</a>
+            <NavLink
+              to=""
+              end
+              className={({ isActive }) => `text-sm font-medium transition-colors ${isActive ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
+            >Home</NavLink>
+            <NavLink
+              to="about"
+              className={({ isActive }) => `text-sm font-medium transition-colors ${isActive ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
+            >About</NavLink>
+            <NavLink
+              to="contact"
+              className={({ isActive }) => `text-sm font-medium transition-colors ${isActive ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
+            >Contact</NavLink>
           </nav>
         </div>
 
