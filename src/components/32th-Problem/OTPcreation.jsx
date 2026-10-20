@@ -65,19 +65,35 @@ export function OTP({ otplength = 6 }) {
   }, []);
 
   return (
-    <div>
-      {otpFeilds.map((item, index) => (
-        <input
-          type="text"
-          value={item}
-          key={index}
-          className="h-4 w-4 p-2 m-2"
-          onKeyDown={(e) => handleKeyDown(e, index)}
-          ref={(currentInput) => {
-            ref.current[index] = currentInput;
-          }}
-        />
-      ))}
+    <div className="flex flex-col items-center p-4 sm:p-6 w-full max-w-md mx-auto">
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-8 w-full flex flex-col items-center gap-8">
+        <h2 className="text-zinc-400 font-medium text-sm tracking-widest uppercase">OTP Verification</h2>
+        <p className="text-xs text-zinc-500 text-center -mt-4">Enter the {otplength}-digit code. Use arrow keys to navigate.</p>
+
+        <div className="flex gap-3">
+          {otpFeilds.map((item, index) => (
+            <input
+              type="text"
+              value={item}
+              key={index}
+              maxLength={1}
+              className={`w-12 h-14 text-center text-xl font-bold font-mono bg-[#18181c] border-2 rounded-xl outline-none transition-all duration-200 caret-blue-400 text-white
+                ${item ? 'border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.2)]' : 'border-white/10 focus:border-blue-500/50'}
+              `}
+              onKeyDown={(e) => handleKeyDown(e, index)}
+              ref={(currentInput) => {
+                ref.current[index] = currentInput;
+              }}
+            />
+          ))}
+        </div>
+
+        {otpFeilds.every(v => v !== '') && (
+          <div className="w-full py-3 px-6 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-center">
+            <span className="text-sm text-emerald-400 font-semibold">Code entered: {otpFeilds.join('')}</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
