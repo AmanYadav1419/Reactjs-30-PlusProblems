@@ -48,12 +48,18 @@ const componentMap = {
     34: lazy(() => import("../components/34th-Problem/Tabs")),
     35: lazy(() => import("../components/35th-Problem/GridLight")),
     36: lazy(() => import("../components/36th-Problem/MemoryGame")),
+    37: lazy(() => import("../components/37th-Problem/FolderStructure"))
 };
 
 // Lazy load wrappers/providers
 const ThemeProvider = lazy(() =>
     import("../components/19th-Problem/ThemeContext").then((m) => ({
         default: m.ThemeProvider,
+    }))
+);
+const ThemeWrapper = lazy(() =>
+    import("../components/19th-Problem/ThemeContext").then((m) => ({
+        default: m.ThemeWrapper,
     }))
 );
 const NineteenComp = lazy(() =>
@@ -139,10 +145,10 @@ const ProblemPage = () => {
         if (problemId === 19) {
             return (
                 <ThemeProvider>
-                    <div className="App">
+                    <ThemeWrapper>
                         {rendered}
                         <NineteenComp />
-                    </div>
+                    </ThemeWrapper>
                 </ThemeProvider>
             );
         }

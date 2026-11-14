@@ -1,4 +1,4 @@
-// Central configuration for all 36 problems
+// Central configuration for all 37 problems
 // Each problem includes metadata, routing info, and file references
 
 const problems = [
@@ -421,6 +421,21 @@ const problems = [
     folder: "36th-Problem",
     component: "MemoryGame",
     files: ["src/components/36th-Problem/MemoryGame.jsx"],
+  },
+  {
+    id: 37,
+    title: "Folder Structure",
+    description: "Build a nested file and folder structure explorer component.",
+    difficulty: "Advanced",
+    concepts: ["Recursion", "Tree Structure", "Nested Components"],
+    folder: "37th-Problem",
+    component: "FolderStructure",
+    files: [
+      "src/components/37th-Problem/FolderStructure.jsx",
+      "src/components/37th-Problem/components/NestedFolder.jsx",
+      "src/components/37th-Problem/data/folderData.js",
+      "src/components/37th-Problem/hooks/useTraversalTree.jsx",
+    ],
   },
 ];
 
