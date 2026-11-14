@@ -28,6 +28,14 @@ const HomePage = () => {
     const [activeFilter, setActiveFilter] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
 
+    // ── Dynamic metrics derived from the problems array ──────────────────────
+    // These automatically stay accurate whenever a new problem is added.
+    const totalProblems     = problems.length;
+    const beginnerCount     = useMemo(() => problems.filter((p) => p.difficulty === "Beginner").length,     []);
+    const intermediateCount = useMemo(() => problems.filter((p) => p.difficulty === "Intermediate").length, []);
+    const advancedCount     = useMemo(() => problems.filter((p) => p.difficulty === "Advanced").length,     []);
+    // ─────────────────────────────────────────────────────────────────────────
+
     const filteredProblems = useMemo(() => {
         return problems.filter((p) => {
             const matchesDifficulty =
@@ -74,7 +82,8 @@ const HomePage = () => {
                             className="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.1] text-white"
                         >
                             Build Better Code. <br className="hidden md:block" />
-                            <span className="text-zinc-600">Solve <span className="text-blue-500">36+</span> Patterns.</span>
+                            {/* Dynamic count in hero headline — stays in sync with problems.js */}
+                            <span className="text-zinc-600">Solve <span className="text-blue-500">{totalProblems}+</span> Patterns.</span>
                         </motion.h1>
 
                         <motion.p
@@ -97,20 +106,21 @@ const HomePage = () => {
                             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <h3 className="text-zinc-400 font-medium text-sm tracking-widest uppercase mb-2">System Metrics</h3>
                             <div className="grid grid-cols-2 gap-4">
+                                {/* All 4 numbers are now dynamic — driven by problems.js */}
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-4xl font-black font-mono tracking-tighter">36</span>
+                                    <span className="text-4xl font-black font-mono tracking-tighter">{totalProblems}</span>
                                     <span className="text-xs text-zinc-500 font-medium">TOTAL PROBLEMS</span>
                                 </div>
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-4xl font-black font-mono text-emerald-500 tracking-tighter">10</span>
+                                    <span className="text-4xl font-black font-mono text-emerald-500 tracking-tighter">{beginnerCount}</span>
                                     <span className="text-xs text-zinc-500 font-medium">BEGINNER</span>
                                 </div>
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-4xl font-black font-mono text-amber-500 tracking-tighter">10</span>
+                                    <span className="text-4xl font-black font-mono text-amber-500 tracking-tighter">{intermediateCount}</span>
                                     <span className="text-xs text-zinc-500 font-medium">INTERMEDIATE</span>
                                 </div>
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-4xl font-black font-mono text-rose-500 tracking-tighter">16</span>
+                                    <span className="text-4xl font-black font-mono text-rose-500 tracking-tighter">{advancedCount}</span>
                                     <span className="text-xs text-zinc-500 font-medium">ADVANCED</span>
                                 </div>
                             </div>
