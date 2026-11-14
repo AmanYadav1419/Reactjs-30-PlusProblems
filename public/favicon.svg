@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e111a"/>
+      <stop offset="50%" stop-color="#090a0f"/>
+      <stop offset="100%" stop-color="#050608"/>
+    </linearGradient>
+
+    <!-- Glass Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#818cf8" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- React Orbit 1 (Cyan/Sky) -->
+    <linearGradient id="orbitCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <!-- React Orbit 2 (Indigo/Purple) -->
+    <linearGradient id="orbitIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <!-- React Orbit 3 (Emerald/Teal) -->
+    <linearGradient id="orbitEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+
+    <!-- Core Nucleus Radial Gradient -->
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="45%" stop-color="#38bdf8"/>
+      <stop offset="85%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </radialGradient>
+
+    <!-- Ambient Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="28" result="blur"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle with Glass Edge -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Ambient Glow in Center -->
+  <circle cx="256" cy="256" r="140" fill="#0284c7" opacity="0.18" filter="url(#softGlow)"/>
+
+  <!-- Outer Glass Stroke -->
+  <rect x="16" y="16" width="480" height="480" rx="108" stroke="url(#borderGrad)" stroke-width="6" fill="none"/>
+
+  <!-- React Lab Core System -->
+  <g transform="translate(256, 256)" filter="url(#glow)">
+    
+    <!-- Orbit 1: Horizontal Ellipse (-60 deg) -->
+    <ellipse rx="172" ry="64" transform="rotate(-30)" fill="none" stroke="url(#orbitCyan)" stroke-width="15" stroke-dasharray="1000" opacity="0.95"/>
+    
+    <!-- Orbit 2: Horizontal Ellipse (+30 deg) -->
+    <ellipse rx="172" ry="64" transform="rotate(30)" fill="none" stroke="url(#orbitIndigo)" stroke-width="15" stroke-dasharray="1000" opacity="0.9"/>
+    
+    <!-- Orbit 3: Vertical Ellipse (90 deg) -->
+    <ellipse rx="172" ry="64" transform="rotate(90)" fill="none" stroke="url(#orbitEmerald)" stroke-width="15" stroke-dasharray="1000" opacity="0.92"/>
+
+    <!-- Orbital Particles / Nodes -->
+    <circle cx="-140" cy="-45" r="9" fill="#38bdf8"/>
+    <circle cx="130" cy="-60" r="9" fill="#a855f7"/>
+    <circle cx="0" cy="165" r="9" fill="#34d399"/>
+
+    <!-- Central Nucleus Hexagon Shield (Engineering Lab symbol) -->
+    <polygon points="0,-48 42,-24 42,24 0,48 -42,24 -42,-24" fill="url(#coreGlow)" stroke="#ffffff" stroke-width="3" stroke-opacity="0.8"/>
+
+    <!-- Central Code Pulse Symbol </> -->
+    <!-- Left Bracket < -->
+    <path d="M-15,-12 L-24,0 L-15,12" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Right Bracket > -->
+    <path d="M15,-12 L24,0 L15,12" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Slash / -->
+    <path d="M5,-15 L-5,15" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>
